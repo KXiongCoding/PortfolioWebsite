@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particles Test</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #0b0f1a;
+            overflow: hidden;
+        }
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<div id="tsparticles"></div>
+
+<script src="js/tsparticles.min.js"></script>
+
+<script>
+tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    background: {
+        color: "#0b0f1a"
+    },
+    particles: {
+        number: {
+            value: 100,
+            density: {
+                enable: true,
+                area: 800
+            }
+        },
+        color: {
+            value: "#ffffff"
+        },
+        opacity: {
+            value: 1
+        },
+        size: {
+            value: { min: 3, max: 6 }
+        },
+        move: {
+            enable: true,
+            speed: 1,
+            direction: "none",
+            outMode: "out"
+        }
+    },
+    detectRetina: true
+});
+</script>
+
+</body>
+</html>
