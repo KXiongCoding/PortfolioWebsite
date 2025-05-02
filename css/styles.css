@@ -1,8 +1,24 @@
 /* Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
 
 /* Base */
-html, body { height: 100%; }
+html, body {
+  overflow: hidden;             /* no page scrollbars */
+  overflow-x: hidden;  /* no sideways scroll on the page itself */
+  overflow-y: hidden;  /* completely disable vertical scroll */
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: #0b0f1a;
@@ -10,36 +26,171 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* REMOVE these: max-width: 900px; margin: 0 auto; */
+}
+
+.container {
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 20px; /* gutter */
 }
 
 /* Make main fill available space for sticky footer */
-main { flex: 1; }
-
-/* Header */
-header {
-  text-align: center;
-  padding: 120px 20px 80px;
+main {
+  flex: 1;
 }
-header h1 { font-size: 3rem; color: #fff; }
-header .tagline { font-size: 1.2rem; margin-top: 10px; color: #89cff0; }
+
+/* Hero (Header) */
+header {
+  position: relative;
+  /* fill the viewport */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  padding: 0 20px;
+  /* dark overlay + background image */
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("../images/hero-bg.jpg") center/cover no-repeat;
+  text-align: center;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #ffffff;
+  margin-bottom: 0.5em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+header .tagline {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  margin-top: 10px;
+  color: #89cff0;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
 header .btn {
-  display: inline-block; margin-top: 20px; padding: 10px 20px;
-  color: #0b0f1a; background: #89cff0;
-  text-decoration: none; border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  color: #0b0f1a;
+  background: #89cff0;
+  text-decoration: none;
+  border-radius: 5px;
   transition: background 0.3s;
 }
-header .btn:hover { background: #b5aaff; }
 
-/* Sections */
-section {
-  padding: 100px 20px; text-align: center;
+header .btn:hover {
+  background: #b5aaff;
 }
-section h2 { margin-bottom: 20px; }
+
+/* Sections as “slides” */
+section {
+  /* each section nearly fill screen */
+  min-height: 80vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+section h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: 0.75em;
+  color: #d8dce1;
+}
 
 /* Footer */
 footer {
-  text-align: center; padding: 60px 20px;
+  text-align: center;
+  padding: 60px 20px;
   background: #05060a;
+}
+
+main.horizontal-scroll {
+  scrollbar-width: none;        /* no scrollbar */
+  overflow-x: auto;             /* horizontal scrolling enabled */
+  overflow-y: hidden;           /* no vertical scroll */
+}
+
+main.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Horizontal scroll stays the same */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  height: 100vh;
+  /* hide scrollbars… */
+}
+
+.horizontal-scroll > section {
+  flex: 0 0 100vw;
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero slides still centered via flex */
+.hero {
+  background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("../images/hero-bg.jpg") center/cover no-repeat;
+  text-align: center;
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Navigation arrows */
+.slide-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.slide-nav:disabled {
+  cursor: default;
+  background: rgba(0,0,0,0.3);
+}
+
+.slide-nav:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+#prev-slide {
+  left: 1rem;
+}
+
+#next-slide {
+  right: 1rem;
 }
