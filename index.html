@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin Xiong | Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <main>
-    <header>
+  <main class="horizontal-scroll">
+    <!-- Hero becomes a full-screen slide -->
+    <section class="hero" id="home">
       <h1>Kevin Xiong</h1>
       <p class="tagline"><span id="typed-text"></span></p>
-      <a href="#projects" class="btn">View My Work</a>
-    </header>
+      <!-- Scroll to About (the next slide) -->
+      <a href="#about" class="btn">View My Work</a>
+    </section>
 
+    <!-- About Me slide -->
     <section id="about">
       <h2>About Me</h2>
       <p>I'm a Computer Science student passionate about elegant solutions through code...</p>
     </section>
-
+    
+    <!-- Skills slide -->
     <section id="skills">
       <h2>Skills</h2>
       <!-- tech icons will go here -->
     </section>
-
+    
+    <!-- Projects slide -->
     <section id="projects">
-      <h2>Projects</h2>
+      <h2>Projects</h2> 
       <!-- project cards will go here -->
     </section>
   </main>
+
+  <button id="prev-slide" class="slide-nav" aria-label="Previous slide">‹</button>
+  <button id="next-slide" class="slide-nav" aria-label="Next slide">›</button>
 
   <footer>
     <p>Let's Connect</p>
@@ -36,5 +44,7 @@
   </footer>
 
   <script src="js/script.js"></script>
+  
 </body>
-</html>
+</html> 
+
